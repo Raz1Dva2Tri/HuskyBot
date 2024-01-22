@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HuskyBot_.props" />
+</Project>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LocationModel>
+
+<h2>Локации</h2>
+
+<table class="table">
+    <tr><th>Id</th><th>Х</th><th>У</th> <th>Пользователь</th> <th></th> <th></th> <th></th> </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Latitude</td>
+            <td>@item.Longitude</td>
+
+            <td>@item.Username</td>
+            <td>@item.UserId</td>
+            @{
+                string s = $"https://yandex.ru/maps/54/yekaterinburg/?ll={item.Longitude}%2C{item.Latitude}&z=18"; }
+
+            <td> <a href=@s> На карте</a>  </td>
+            <td>
+            <form asp-controller="Bot" asp-action="Delete" method="post" asp-route-id="@item.Id">
+                <input type="submit" value="Удалить" />
+            </form>
+            </td>
+
+        </tr>
+    }
+</table>
+
+
+@*
+<table class="table">
+    <tr><th>Id</th><th>Х</th><th>У</th> <th>Пользователь</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.</td>
+        </tr>
+    }
+</table>
+*@
